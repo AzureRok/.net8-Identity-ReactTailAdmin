@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RunDebug" type="CompoundRunConfigurationType">
+    <toRun name="IdentityReactTailAdminApp.Server: https" type="LaunchSettings" />
+    <toRun name="React Debug" type="JavascriptDebugType" />
+    <method v="2" />
+  </configuration>
+</component>
