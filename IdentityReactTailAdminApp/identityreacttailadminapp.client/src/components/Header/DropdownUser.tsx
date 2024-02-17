@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import UserOne from '../../images/user/user-01.png';
 import UserContext from '../UserContext';
 
@@ -9,6 +9,34 @@ const DropdownUser = () => {
     const user: any = React.useContext(UserContext);
     const trigger = useRef<any>(null);
     const dropdown = useRef<any>(null);
+
+  const navigate = useNavigate();
+
+
+  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    fetch("/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: ""
+
+    })
+        .then((data) => {
+          if (data.ok) {
+
+            navigate("/");
+          }
+          else { }
+
+
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+
+  };
 
     
 
@@ -158,7 +186,9 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button
+            onClick={handleSubmit}
+            className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
           <svg
             className="fill-current"
             width="22"
